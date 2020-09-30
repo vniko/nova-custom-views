@@ -132,7 +132,7 @@ class Error403ViewCommand extends Command
      */
     protected function installNpmDependencies()
     {
-        $this->runCommand('npm set progress=false && npm install', $this->viewsPath());
+        $this->runCommand('npm set progress=false && npm install', $this->viewsPath(), $this->output);
     }
 
     /**
@@ -142,7 +142,7 @@ class Error403ViewCommand extends Command
      */
     protected function compile()
     {
-        $this->runCommand('npm run dev', $this->viewsPath());
+        $this->runCommand('npm run dev', $this->viewsPath(), $this->output);
     }
 
     /**
@@ -152,7 +152,7 @@ class Error403ViewCommand extends Command
      */
     protected function composerUpdate()
     {
-        $this->runCommand('composer update', getcwd());
+        $this->runCommand('composer update', getcwd(), $this->output);
     }
 
     /**
@@ -162,7 +162,7 @@ class Error403ViewCommand extends Command
      * @param  string  $path
      * @return void
      */
-    protected function runCommand($command, $path)
+    protected function runCommand($command, $path, OutputInterface $output)
     {
         $process = (new Process($command, $path))->setTimeout(null);
 
