@@ -181,7 +181,7 @@ class ViewsCommand extends Command
      */
     protected function installNpmDependencies()
     {
-        $this->runCommand('npm set progress=false && npm install', $this->viewsPath(), $this->output);
+        $this->runCommand('npm install', $this->viewsPath(), $this->output);
     }
 
     /**
@@ -213,7 +213,7 @@ class ViewsCommand extends Command
      */
     protected function runCommand($command, $path, OutputInterface $output)
     {
-        $process = (new Process($command, $path))->setTimeout(null);
+        $process = (new Process(explode(' ', $command), $path))->setTimeout(null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
             $process->setTty(true);
