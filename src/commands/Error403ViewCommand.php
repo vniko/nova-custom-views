@@ -8,6 +8,8 @@ use Illuminate\Filesystem\Filesystem;
 use Laravel\Nova\Console\Concerns\AcceptsNameAndVendor;
 use Laravel\Nova\Nova;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Output\OutputInterface;
+
 
 class Error403ViewCommand extends Command
 {
