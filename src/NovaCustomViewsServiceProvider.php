@@ -1,11 +1,15 @@
 <?php
 
-namespace devmtm\NovaCustomViews;
+namespace NovaCustomViews;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
+use NovaCustomViews\Commands\DashboardViewCommand;
+use NovaCustomViews\Commands\Error403ViewCommand;
+use NovaCustomViews\Commands\Error404ViewCommand;
+use NovaCustomViews\Commands\ViewsCommand;
 
 class NovaCustomViewsServiceProvider extends ServiceProvider
 {
@@ -28,10 +32,10 @@ class NovaCustomViewsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            devmtm\NovaCustomViews\Commands\ViewsCommand::class,
-            devmtm\NovaCustomViews\Commands\DashboardViewCommand::class,
-            devmtm\NovaCustomViews\Commands\Error403ViewCommand::class,
-            devmtm\NovaCustomViews\Commands\Error404ViewCommand::class
+            ViewsCommand::class,
+            DashboardViewCommand::class,
+            Error403ViewCommand::class,
+            Error404ViewCommand::class
         ]);
     }
 }
